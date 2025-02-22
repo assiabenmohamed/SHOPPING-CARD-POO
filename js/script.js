@@ -37,7 +37,10 @@ class shoppingcart {
   }
   // Supprime un produit du panier en filtrant les éléments qui ne correspondent pas à l'ID du produit
   removeItems(product) {
-    this.items = this.items.filter((item) => item.Product.id != product.id);
+    console.log(product.id);
+    let temp = this.items.filter((item) => item.Product.id !== product.id);
+    this.items = temp;
+    console.log(this.items);
     this.removeUi(); // Supprime l'affichage du produit dans l'interface
     this.updateTotalPrice(); // Met à jour le prix total affiché
   }
@@ -110,6 +113,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   // Gère la suppression d'un produit au clic sur l'icône "🗑️"
   document.querySelectorAll(".fa-trash-alt").forEach((btn, index) => {
-    btn.addEventListener("click", () => cart.removeItems(products[index].id));
+    btn.addEventListener("click", () => cart.removeItems(products[index]));
   });
 });
